@@ -11,15 +11,6 @@ import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
 const TodoApp = () => {
-  const initialTodos = JSON.parse(window.localStorage.getItem('todos') || [])
-  const {todos, addTodo, removeTodo, toggleTodo, editTodo} = useTodoState(initialTodos)
-
-  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
-  
-
   return (
     <div>
       <Paper
@@ -38,13 +29,8 @@ const TodoApp = () => {
         <Grid container justify='center' style={{ marginTop: '1rem' }}>
           <Grid item xs={11} md={8} lg={4}>
             <TodosProvider>
-              <TodoForm addTodo={addTodo} />
-              <TodoList
-                todos={todos}
-                removeTodo={removeTodo}
-                toggleTodo={toggleTodo}
-                editTodo={editTodo}
-              />
+              <TodoForm />
+              <TodoList />
             </TodosProvider>
           </Grid>
         </Grid>

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Paper, TextField } from '@material-ui/core';
 
+import { TodosContext } from './context/todos.context';
 import useInputState from './hooks/useInputState';
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = () => {
   const [value, handleChange, reset] = useInputState('');
+  const {addTodo} = useContext(TodosContext)
   return (
     <Paper style={{ margin: '1rem 0', padding: '0 1rem' }}>
       <form
